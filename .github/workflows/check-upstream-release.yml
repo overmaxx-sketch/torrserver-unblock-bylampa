@@ -277,24 +277,34 @@ jobs:
             cp -a "$RUNNER_TEMP/bylampa-workflows/." \
               .github/workflows/
 
-            # Добавляем описание форка в README.
+            # Добавляем описание форка и инструкции в README.
             if [ -f README.md ]; then
               {
                 cat <<'EOF'
           # TorrServer Bylampa Unlock
 
-          Unofficial TorrServer fork with a Bylampa WAF patch.
+          **Unofficial TorrServer fork with a Bylampa.online compatibility patch.** This project is based on [YouROK/TorrServer](https://github.com/YouROK/TorrServer) and is not affiliated with or endorsed by the upstream maintainers or Bylampa.online.
 
           ## About this fork
 
-          Based on the official YouROK/TorrServer project.
+          This fork keeps the upstream TorrServer code and applies a targeted change to WAF `Referer` handling intended to remove the Bylampa-specific referer restriction. The patch is applied to `server/web/waf/referer.go` by this repository's release synchronization workflow.
 
-          - Bylampa referer restriction patch
-          - Automated upstream release synchronization
-          - Separate Bylampa release tags
+          What's different:
 
-          Original project:
-          https://github.com/YouROK/TorrServer
+          - **Bylampa compatibility patch** — adjusts the Bylampa-related WAF referer rule.
+          - **Automated upstream synchronization** — tracks stable `MatriX.*` releases starting with `MatriX.144.1`.
+          - **Separate releases** — fork releases use the upstream version with a `-bylampa` suffix, for example `MatriX.144.1-bylampa`.
+          - **Prebuilt binaries** — releases are built for the operating systems and architectures listed below.
+
+          This is an unofficial fork. For the original project and general TorrServer documentation, visit [YouROK/TorrServer](https://github.com/YouROK/TorrServer).
+
+          ## Download a Bylampa build
+
+          Download builds from the [TorrServer Bylampa Unlock Releases](https://github.com/overmaxx-sketch/torrserver-unblock-bylampa/releases) page. Choose a release whose tag ends in `-bylampa`, then download the asset matching your operating system and CPU architecture. Make sure you use this fork's release rather than a release from the upstream TorrServer repository.
+
+          ## Versioning
+
+          The synchronization workflow checks stable upstream `MatriX.*` releases from `MatriX.144.1` onward, applies the Bylampa-specific patch, and publishes a separate tag and GitHub Release with the `-bylampa` suffix. These releases are maintained separately from the official [YouROK/TorrServer](https://github.com/YouROK/TorrServer) releases.
 
           ---
 
