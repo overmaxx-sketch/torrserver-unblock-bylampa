@@ -103,4 +103,3 @@ To update a direct installation, download and run the desired newer asset from t
 ## Source and license
 
 This fork is based on [YouROK/TorrServer](https://github.com/YouROK/TorrServer). See this repository's [LICENSE](https://github.com/overmaxx-sketch/torrserver-unblock-bylampa/blob/master/LICENSE) for licensing terms.
-
