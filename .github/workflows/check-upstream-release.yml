@@ -434,8 +434,13 @@ jobs:
             # Проверяем синтаксис всех workflow перед коммитом.
             git add -A
 
+            # Удаляем пробелы и табы в конце строк
+            git diff --cached --name-only -z |
+              xargs -0 -r sed -i 's/[[:blank:]]*$//'
+            
+            git add -A
             git diff --cached --check
-
+            
             git commit \
               -m "Release ${TARGET} (upstream ${TAG} + Bylampa patch)"
 
