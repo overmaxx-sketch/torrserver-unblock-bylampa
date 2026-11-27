@@ -434,8 +434,9 @@ jobs:
             # Проверяем синтаксис всех workflow перед коммитом.
             git add -A
 
-            # Удаляем пробелы и табы в конце строк
-            git diff --cached --name-only -z |
+            # Удаляем пробелы и табы в конце строк только в добавленных,
+            # скопированных и изменённых файлах, исключая удалённые.
+            git diff --cached --name-only --diff-filter=ACM -z |
               xargs -0 -r sed -i 's/[[:blank:]]*$//'
             
             git add -A
